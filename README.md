@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app was designed with:
 
-Things you may want to cover:
+* Front-end: AngularJS
 
-* Ruby version
+* Back-end: Rails
 
-* System dependencies
+* Database: PostgreSQL
 
-* Configuration
 
-* Database creation
+Details:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Rails: 5.0.0.1
