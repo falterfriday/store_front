@@ -18,4 +18,6 @@
 
 # Ignore bower stuff
 app/assets/javascripts/bower_components
-
+config/database.yml
+Gemfile
+Gemfile.lock
