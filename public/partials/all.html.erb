@@ -1,0 +1,19 @@
+<div>
+	<input ng-search="" type="" name="">
+	<button ng-click="search()"><img src="#"></button>
+	<h1>Categories</h1>
+	<p ng-repeat = "category in categories"> {{category.name}}({{category.total}})</p>
+</div>
+<div>
+	<h3>{{category.name}}(page number)</h3>
+	<a href="#">First</a> | <a href="#">prev</a> | <a href="#">{{current}}</a> | <a href="#">next</a>
+	<select>
+		<option>Price</option>
+		<option>Most Popular</option>
+	</select>
+	<div ng-repeat = 'product in products | track by index' ng-click = '/show_product'>
+		<img src="#">
+		<p>{{product.price}}</p>
+		<p>{{product.name}}</p>
+	</div> 
+</div>
