@@ -17,5 +17,5 @@
 .byebug_history
 
 # Ignore bower stuff
-/bower_components
+app/assets/javascripts/bower_components
 
