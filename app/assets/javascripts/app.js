@@ -1,12 +1,13 @@
-var app = angular.module('myApp', ['ngRoute']);
-app.config(function($routeProvider) {
+var app = angular.module('myApp', ['ngRoute', 'ngCookies']);
+app.config(function($routeProvider,  $httpProvider) {
     $routeProvider
         .when("/", {
             templateUrl: "/partials/all.html.erb",
-            controller: "playersController"
+            controller: "categoriesController"
         })
-        .when("/show_product", {
+        .when("/show_product/:id", {
             templateUrl: "/partials/show.html.erb",
-            controller: "teamsController"
+            controller: "productsController"
         })
+    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 });
