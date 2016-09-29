@@ -1,0 +1,24 @@
+{
+  "name": "store_front",
+  "homepage": "https://github.com/jcrescent/store_front",
+  "authors": [
+    "Jacob Crescent <jacobcrescent@gmail.com>"
+  ],
+  "description": "e-commerce site",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ], 
+    "dependencies": {
+    "angular-cookies": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "angular": "^1.5.8",
+    "angular-material": "^1.1.1"
+  }
+}
