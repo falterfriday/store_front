@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
-
+    def renderindex
+        
+    end
     def index
         render :json => Category.all
     end
