@@ -1,2 +1,24 @@
 <input ng-model="search" type="search">
-<
+<button ng-click='popup()'>Add new product</button>
+<table>
+	<thead>
+		<tr>
+			<th>Picture</th>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Inventory Count</th>
+			<th>Quantity Sold</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="product in products">
+			<td><img src="{{product.mainimg}}"></td>
+			<td>{{product.id}}</td>
+			<td>{{product.name}}</td>
+			<td>{{product.inventory}}</td>
+			<td>{{product.quant_sold}}</td>
+			<td><p ng-click="edit()">Edit</p><p ng-click="delete()">Delete</p></td>
+		</tr>
+	</tbody>
+</table>
