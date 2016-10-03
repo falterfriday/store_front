@@ -17,5 +17,12 @@
 .byebug_history
 
 # Ignore bower stuff
-/bower_components
+app/assets/javascripts/bower_components
+vendor/assets/bower_components
 
+# Ignore Gemfile
+Gemfile
+Gemfile.lock
+
+# Ignore DB config
+config/database.yml

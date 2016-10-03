@@ -1,4 +1,4 @@
-<a href="#">Go Back</a>
+<a href="/">Go Back</a>
 <h3>{{product.name}}</h3>
 <div>
 	<img src="#">
@@ -6,14 +6,16 @@
 </div>
 <div>
 	<p>{{product.description}}</p>
-	<select>
-		<option>1</option>
-		<option>2</option>
-		<option>3</option>
-	</select>
+	<form ng-submit = "addToCart()">
+		<select ng-model = "item.quantity">
+			<option ng-repeat = "q in product.inventory | limitTo: 10" value="{{q}}">{{q}}({{product.price*q}})</option>
+		</select>
+		<input type="submit" value="Add to Cart">
+	</form>
+
 </div>
 <h4>Similar Items</h4>
-<div ng-repeat= "product in products">
+<div ng-repeat= "product in related">
 	<img src="#">
 	<p>{{product.price}}</p>
 	<p>{{product.name}}</p>
