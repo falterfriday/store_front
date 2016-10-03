@@ -5,6 +5,7 @@ app.factory('categoriesFactory', ['$http', function($http){
 			$http.get('/categories').success(function(results){
 				callback(results)
 			})
-		}
+		}	
 	}
+	return new categoriesFactory()
 }])

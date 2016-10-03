@@ -8,7 +8,7 @@
 	<p>{{product.description}}</p>
 	<form ng-submit = "addToCart()">
 		<select ng-model = "item.quantity">
-			<option ng-repeat = "q in product.inventory | limitTo: 10">{{q}}({{product.price*q}})</option>
+			<option ng-repeat = "q in product.inventory | limitTo: 10" value="{{q}}">{{q}}({{product.price*q}})</option>
 		</select>
 		<input type="submit" value="Add to Cart">
 	</form>

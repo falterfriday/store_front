@@ -13,4 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require angular
+//= require angular-route
+//= require angular-animate
+//= require angular-aria
+//= require angular-cookies
+//= require angular-material
+//= require angular-messages
+//= require app
+//= require_tree ./controllers
+//= require_tree ./factories
 //= require_tree .

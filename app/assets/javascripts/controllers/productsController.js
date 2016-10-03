@@ -3,6 +3,13 @@ app.controller('productsController', ['$scope', '$routeParams', 'productsFactory
 	$scope.product;
 	$scope.related;
 	$scope.inventory = [];
+	var products = [];
+
+	$scope.getProducts = function(){
+		productsFactory.getProducts(function(results){
+			$scope.products = results;
+		})
+	}
 
 	$scope.getProduct = function(){
 		productsFactory.getProduct($routeParams.id, function(results){
@@ -20,8 +27,15 @@ app.controller('productsController', ['$scope', '$routeParams', 'productsFactory
 	}
 
 	$scope.addToCart = function(){
-		$cookies.putObject()
+		var queue = [];
+		for (var i = 0; i < $scope.item.quantity; i++){
+			queue.push($scope.product.id)
+		}
+		productFactory.addToCart($scope.user.id, queue, function(results){
+
+		})
 	}
+
 
 
 //Must remain in this order

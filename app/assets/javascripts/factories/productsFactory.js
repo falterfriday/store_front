@@ -12,6 +12,12 @@ app.factory('productsFactory', ['$http', function($http){
 				callback(results);
 			})
 		}
+		this.addToCart = function(id, queue, callback){
+			$http.post(`/users/${id}/cart`, queue).success(function(results){
+				callback(results);
+			})
+		}
 	}
+	return new productsFactory();
 }])
 	
