@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute', 'ngCookies']);
+var app = angular.module('app', ['ngRoute', 'ngCookies']);
 app.config(function($routeProvider,  $httpProvider) {
     $routeProvider
         .when("/", {

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  total: 1.5
+  user: one
+  ship: one
+  bill: one
+
+two:
+  status: MyString
+  total: 1.5
+  user: two
+  ship: two
+  bill: two
