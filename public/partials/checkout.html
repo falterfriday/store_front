@@ -1,0 +1,59 @@
+<!-- Angular Material - could use divider/list -->
+<!-- possible look at angular material table directive -->
+<div class="checkout_top">
+<table>
+    <thead>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="product in products">
+            <td>{{product.name}}</td>
+            <td>${{product.price}}</td>
+            <td>{{product.quantity}} <a href="#">update</a><a href="#">::trash icon::</a></td>
+            <td>${{product.total * product.quantity}}</td>
+        </tr>
+    </tbody>
+</table>
+<h4>Total: ${{cart.total}}</h4>
+<button ng-href="#/">Continue Shopping</button>
+</div>
+<div class="checkout_shipping">
+    <h3>Shipping Information</h3>
+    <form>
+        <input type="text" name="shippingInfo.user.first_name">
+        <input type="text" name="shippingInfo.user.last_name">
+        <input type="text" name="shippingInfo.user.address">
+        <input type="text" name="shippingInfo.user.address2">
+        <input type="text" name="shippingInfo.user.city">
+        <input type="text" name="shippingInfo.user.state">
+        <input type="text" name="shippingInfo.user.zip">
+    </form>
+</div>
+<div class="checkout_billing">
+    <md-checkbox
+        ng-model="sameAsShipping"
+        ng-true-value="shippingInfo.user"
+        ng-false-value=""
+        aria-label="Same as shipping">
+        Same as Shipping
+        <h3>Billing Information</h3>
+        <form>
+            <input type="text" name="billingInfo.user.first_name" value="">
+            <input type="text" name="billingInfo.user.last_name" value="">
+            <input type="text" name="billingInfo.user.address" value="">
+            <input type="text" name="billingInfo.user.address2" value="">
+            <input type="text" name="billingInfo.user.city" value="">
+            <input type="text" name="billingInfo.user.state" value="">
+            <input type="text" name="billingInfo.user.zip" value="">
+<!-- ___________________________these are sent off to Stripe API___________________________ -->
+            <input type="text" name="billingInfo.user.card" value="">
+            <input type="text" name="billingInfo.user.security" value="">
+            <input type="text" name="billingInfo.user.expirationMonth" value="">
+            <input type="text" name="billingInfo.user.expirationYear" value="">
+        </form>
+    </md-checkbox>
+    <button ng-href="#/pay">Pay</button>
+</div>
