@@ -1,0 +1,30 @@
+<input type="search" ng-model="searchorders">
+<select ng-model="ordertype">
+	<option value="all">Show All</option>
+	<option value="in">Order in</option>
+	<option value="proc">process</option>
+	<option value="ship">Shipped</option>
+</select>
+
+<table>
+	<thead>
+		<tr>
+			<th>Order ID</th>
+			<th>Name</th>
+			<th>Date</th>
+			<th>Billing Address</th>
+			<th>Total</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="order in orders | orderBy: 'created_at' | filter:{id:searchorders, bill.first_name: searchorders, total: searchorders, bill.address: searchorders, bill.address2: searchorders, bill.city: searchorders, bill.state: searchorders, bill.zip: searchorders, status: ordertype}">
+			<td>{{order.id}}</td>
+			<td>{{order.bill.first_name}}</td>
+			<td>{{order.bill.address}} , {{order.bill.address2}} {{order.bill.state}}, {{order.bill.zip}} </td>
+			<td>{{order.total}}</td>
+			<td>{{order.status}}</td>
+		</tr>
+	</tbody>
+	<p>pagenation</p>
+</table>
