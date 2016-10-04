@@ -20,10 +20,9 @@ app.controller('adminOrdersController', ['$scope', '$routeParams', 'adminOrdersF
 		})
 	}
 	$scope.getOrder = function(){
-		//on the backend we need to package as object that includes all purchase with order id passed back and order info 
 		adminOrdersFactory.getOrder($routeParams.id, function(results){
 			$scope.order = results.order;
-			$scope.productsOrder = results.products;
+			$scope.productsOrder = results.order.products;
 		})
 	}
 	$scope.changeStatus = function(status,id){
