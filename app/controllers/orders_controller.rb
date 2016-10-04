@@ -22,14 +22,8 @@ class OrdersController < ApplicationController
     end
 
     def update
-        Order.update(
-            params[:id],
-            user: User.find(params[:id]),
-            status: params[:status],
-            ship_info: @ship_info,
-            bill_info: @bill,
-            total: @total
-            )
+        Order.update(params[:id],status: params[:status])
+        render :json => Order.all
     end
 
     def destroy
