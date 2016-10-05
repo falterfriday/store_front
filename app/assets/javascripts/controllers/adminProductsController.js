@@ -1,4 +1,4 @@
-app.controller('adminProductsController', ['$mdDialog','$scope', '$routeParams', 'adminProductsFactory', '$location','$cookies', function($mdDialog, $scope, $routeParams, adminProductsFactory, $location, $cookies){
+app.controller('adminProductsController', ['categoriesFactory','$mdDialog','$scope', '$routeParams', 'adminProductsFactory', '$location','$cookies', function(categoriesFactory,$mdDialog, $scope, $routeParams, adminProductsFactory, $location, $cookies){
 	$scope.products = [];
 	$scope.addNewProduct = function(ev){
 		$mdDialog.show({
@@ -9,24 +9,27 @@ app.controller('adminProductsController', ['$mdDialog','$scope', '$routeParams',
       		clickOutsideToClose:true,
       		fullscreen: false
 			})
-		.then(function(answer) {
-			$scope.status = 'You said the information was "' + answer + '".';
-		}, function() {
-	      	$scope.status = 'You cancelled the dialog.';
-	    });
 	}
-	function addNewProductController($scope, $mdDialog) {
+	function addNewProductController($scope, $mdDialog){
+		$scope.categories = [];
+		$scope.getCategories = function(){
+			categoriesFactory.getCategories(function(results){
+				$scope.categories = results
+			})
+		}
 	    $scope.hide = function() {
-	      $mdDialog.hide();
+	    	$mdDialog.hide();
 	    };
-
 	    $scope.cancel = function() {
-	      $mdDialog.cancel();
+	    	$mdDialog.cancel();
 	    };
-
-	    $scope.answer = function(answer) {
-	      $mdDialog.hide(answer);
+	    $scope.newProduct = function(){
+	    	adminProductsFactory.addProduct($scope.newProduct,function(results){
+	    		$scope.$parent.$$childHead.products = results
+	    		$mdDialog.hide();
+	    	})
 	    };
+	    $scope.getCategories();
 	}
 	$scope.getProducts = function(){
 		adminProductsFactory.getProducts(function(results){

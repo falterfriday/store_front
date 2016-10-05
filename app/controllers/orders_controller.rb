@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
     def index
-        @orders = Orders.all
+        render :json => Orders.all
     end
 
     def create
@@ -32,6 +32,6 @@ class OrdersController < ApplicationController
     end
 
     def show
-        @order = Order.find(params[:id])
+        render :json => Order.find(params[:id])
     end
 end
