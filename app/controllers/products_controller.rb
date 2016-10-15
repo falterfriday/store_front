@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 	def create
 		Product.create(product_params)
+		render :json => Product.all
 	end
 	def update
 		Product.update(params[:product_id], product_params)

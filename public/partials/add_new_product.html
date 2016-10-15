@@ -1,1 +1,53 @@
-<h1>Hell Yeah!</h1>
+<md-dialog aria-label ="Add New Product">
+	<form ng-cloak>
+		<md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2>Add New Product</h2>
+			<span flex></span>
+        	<md-button class="md-icon-button" ng-click="cancel()">
+          	<md-icon class="material-icons" aria-label="Close dialog">cancel</md-icon>
+        	</md-button>
+		</div>
+		</md-toolbar>
+		<md-dialog-content layout="row">
+			<div class="md-dialog-content newproduct" layout="column">
+				<md-input-container>
+					<label>Name</label>
+					<input required ng-model="newProduct.name">
+				</md-input-container>
+				<md-input-container>
+					<label>Description</label>
+					<textarea required ng-model="newProduct.description"></textarea>
+				</md-input-container>
+				<md-input-container>
+					<label>Price</label>
+					<input required ng-model="newProduct.price">
+				</md-input-container>
+				<md-input-container>
+					<label>Inventory</label>
+					<input required type="text" ng-model="newProduct.inventory">
+				</md-input-container>
+				<md-input-container>
+					<label>Category</label>
+					<md-select ng-model="newProduct.category">
+						<md-option ng-repeat="category in categories" ng-value="category.id">
+						{{category.name}}
+						</md-option>
+					</md-select>
+				</md-input-container>
+				<md-input-container>
+					<label>Main Image</label>
+				</md-input-container>
+					<input id="picinput" type="file" ng-model="newProduct.main_img">
+				<md-input-container>
+					<label>Secondary Image</label>
+				</md-input-container>
+					<input id="picinput" type="file" ng-model="newProduct.sec_img">
+				
+				<md-dialog-actions layout="row">
+					<md-button class="md-raised" ng-click="newProduct()" md-autofocus>Add New Product</md-button>
+				</md-dialog-actions>
+			</div>
+		</md-dialog-content>
+	</form>
+</md-dialog>
