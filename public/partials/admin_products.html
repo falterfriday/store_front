@@ -15,12 +15,13 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="product in products">
-			<td><img src="{{product.mainimg}}"></td>
+		{{}}
+			<td><img ng-src="{{product.url}}"></td>
 			<td>{{product.id}}</td>
 			<td>{{product.name}}</td>
 			<td>{{product.inventory}}</td>
 			<td>{{product.quant_sold}}</td>
-			<td><p ng-click="edit()">Edit</p><p ng-click="delete()">Delete</p></td>
+			<td><p ng-click="edit()">Edit</p><p ng-click="deleteProducts(product.id)">Delete</p></td>
 		</tr>
 	</tbody>
 </table>
