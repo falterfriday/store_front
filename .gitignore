@@ -26,3 +26,5 @@ Gemfile.lock
 
 # Ignore DB config
 config/database.yml
+
+public/system/

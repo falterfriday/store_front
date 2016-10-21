@@ -38,14 +38,14 @@
 				<md-input-container>
 					<label>Main Image</label>
 				</md-input-container>
-					<input id="picinput" type="file" ng-model="newProduct.main_img">
+					<div class="button" ngf-select ng-model="newProduct.main_img" >Select</div>
 				<md-input-container>
 					<label>Secondary Image</label>
 				</md-input-container>
 					<input id="picinput" type="file" ng-model="newProduct.sec_img">
 				
 				<md-dialog-actions layout="row">
-					<md-button class="md-raised" ng-click="newProduct()" md-autofocus>Add New Product</md-button>
+					<md-button class="md-raised" ng-click="newProductCreation()" md-autofocus>Add New Product</md-button>
 				</md-dialog-actions>
 			</div>
 		</md-dialog-content>
