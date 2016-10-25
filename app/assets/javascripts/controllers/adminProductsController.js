@@ -1,5 +1,6 @@
 app.controller('adminProductsController', ['Upload','categoriesFactory','$mdDialog','$scope', '$routeParams', 'adminProductsFactory', '$location','$cookies', function(Upload,categoriesFactory,$mdDialog, $scope, $routeParams, adminProductsFactory, $location, $cookies){
 	$scope.products = [];
+	var controller_scope = $scope
 	$scope.addNewProduct = function(ev){
 		$mdDialog.show({
 			controller: addNewProductController, 
@@ -39,17 +40,14 @@ app.controller('adminProductsController', ['Upload','categoriesFactory','$mdDial
 	                	fd.append('product['+key+']', val);
 	            	}
         		}
+	    	}).success(function(results){
+	    		controller_scope.products = results
+	    		$mdDialog.hide();
 	    	})
 	    };
 	    $scope.newProductCreation = function(){
 	    	$scope.newProduct.quant_sold = 0;
 	    	$scope.upload($scope.newProduct.main_img)
-	    	console.log("GOT HERE")
-	    	$mdDialog.hide()
-	    	// adminProductsFactory.addProduct($scope.newProduct,function(results){
-	    	// 	$scope.$parent.$$childHead.products = results
-	    	// 	$mdDialog.hide();
-	    	// })
 	    };
 	    $scope.getCategories();
 	}
