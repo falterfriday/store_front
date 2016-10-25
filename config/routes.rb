@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 	post "/users/:id/cart" => 'users#addToCart'
 	get "/admin_products" => 'products#index'
 	post "/admin_products/add" => 'products#create'
+	get "/admin_products/delete/:id" => 'products#destroy'
 	get "/orders" => 'orders#index'
 	get "/orders/:id" => 'orders#show'
 	# post "/orders/status/:id/:status" => 'orders#'

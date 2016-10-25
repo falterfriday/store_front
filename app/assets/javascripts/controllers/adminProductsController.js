@@ -1,4 +1,4 @@
-app.controller('adminProductsController', ['categoriesFactory','$mdDialog','$scope', '$routeParams', 'adminProductsFactory', '$location','$cookies', function(categoriesFactory,$mdDialog, $scope, $routeParams, adminProductsFactory, $location, $cookies){
+app.controller('adminProductsController', ['Upload','categoriesFactory','$mdDialog','$scope', '$routeParams', 'adminProductsFactory', '$location','$cookies', function(Upload,categoriesFactory,$mdDialog, $scope, $routeParams, adminProductsFactory, $location, $cookies){
 	$scope.products = [];
 	$scope.addNewProduct = function(ev){
 		$mdDialog.show({
@@ -10,7 +10,7 @@ app.controller('adminProductsController', ['categoriesFactory','$mdDialog','$sco
       		fullscreen: false
 			})
 	}
-	function addNewProductController($scope, $mdDialog){
+	function addNewProductController($scope, $mdDialog, Upload){
 		$scope.categories = [];
 		$scope.getCategories = function(){
 			categoriesFactory.getCategories(function(results){
@@ -23,16 +23,44 @@ app.controller('adminProductsController', ['categoriesFactory','$mdDialog','$sco
 	    $scope.cancel = function() {
 	    	$mdDialog.cancel();
 	    };
-	    $scope.newProduct = function(){
-	    	adminProductsFactory.addProduct($scope.newProduct,function(results){
-	    		$scope.$parent.$$childHead.products = results
-	    		$mdDialog.hide();
+	    $scope.upload = function(file){
+	    	Upload.upload({
+	    		url: '/admin_products/add',
+        		method: 'POST',
+        		data: $scope.newProduct,//it is the data that's need to be sent along with image
+        		file: file,
+        		fileFormDataName: 'product[main_img]',//myEntity is the name of the entity in which image is saved and image is the name of the attachment
+        		formDataAppender: function(fd, key, val) {
+	            	if (angular.isArray(val)) {
+	                	angular.forEach(val, function(v) {
+	                    	fd.append('product['+key+']', v);
+	                });
+	            	} else {
+	                	fd.append('product['+key+']', val);
+	            	}
+        		}
 	    	})
+	    };
+	    $scope.newProductCreation = function(){
+	    	$scope.newProduct.quant_sold = 0;
+	    	$scope.upload($scope.newProduct.main_img)
+	    	console.log("GOT HERE")
+	    	$mdDialog.hide()
+	    	// adminProductsFactory.addProduct($scope.newProduct,function(results){
+	    	// 	$scope.$parent.$$childHead.products = results
+	    	// 	$mdDialog.hide();
+	    	// })
 	    };
 	    $scope.getCategories();
 	}
 	$scope.getProducts = function(){
 		adminProductsFactory.getProducts(function(results){
+			$scope.products = results;
+			console.log($scope.products)
+		})
+	}
+	$scope.deleteProducts = function(id){
+		adminProductsFactory.deleteProduct(id,function(results){
 			$scope.products = results;
 		})
 	}

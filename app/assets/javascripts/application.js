@@ -20,6 +20,7 @@
 //= require angular-cookies
 //= require angular-material
 //= require angular-messages
+//= require ng-file-upload
 //= require app
 //= require_tree ./controllers
 //= require_tree ./factories
