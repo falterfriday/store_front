@@ -1,5 +1,5 @@
 app.controller('adminOrdersController', ['$scope', '$routeParams', 'adminOrdersFactory', '$location','$cookies', function($scope, $routeParams, adminOrdersFactory, $location, $cookies){
-	
+	// blahblahbabalhalhalb
 	$scope.orders;
 	$scope.order;
 	$scope.productsOrder;
