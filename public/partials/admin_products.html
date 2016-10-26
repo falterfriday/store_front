@@ -1,7 +1,10 @@
-<input ng-model="search" type="search">
+ <md-input-contianer>
+ 	<input type="text" ng-model='search' placeholder ='&#128269;'>
+ </md-input-contianer>	
 <md-button class="md-primary md-raised" ng-click="addNewProduct($event)">
       ADD NEW PRODUCT
- </md-button>
+</md-button>
+
 <table>
 	<thead>
 		<tr>
@@ -13,14 +16,28 @@
 			<th>Action</th>
 		</tr>
 	</thead>
+
 	<tbody>
-		<tr ng-repeat="product in products">
-			<td><img ng-src="{{product.url}}"></td>
-			<td>{{product.id}}</td>
-			<td>{{product.name}}</td>
-			<td>{{product.inventory}}</td>
-			<td>{{product.quant_sold}}</td>
-			<td><p ng-click="edit()">Edit</p><p ng-click="deleteProducts(product.id)">Delete</p></td>
+		<tr ng-repeat="product in products | filter: search">
+			<td>
+				<img ng-src="{{product.url}}" height='42' width='42'>
+			</td>
+			<td ng-if="$odd" style="background-color:#f1f1f1">{{product.id}}</td>
+			<td ng-if="$even">{{product.id}}</td>
+			<td ng-if="$odd" style="background-color:#f1f1f1">{{product.name}}</td>
+			<td ng-if="$even">{{product.name}}</td>
+			<td ng-if="$odd" style="background-color:#f1f1f1">{{product.inventory}}</td>
+			<td ng-if="$even">{{product.inventory}}</td>
+			<td ng-if="$odd" style="background-color:#f1f1f1">{{product.quant_sold}}</td>
+			<td ng-if="$even">{{product.quant_sold}}</td>
+			<td ng-if="$odd" layout='row' style="background-color:#f1f1f1">
+				<md-button ng-click="edit()" class="md-primary md-raised">Edit</md-button>
+				<md-button ng-click="deleteProducts(product.id)" class="md-primary md-raised">Delete</md-button>
+			</td>
+			<td ng-if="$even" layout='row'>
+				<md-button ng-click="edit()" class="md-primary md-raised">Edit</md-button>
+				<md-button ng-click="deleteProducts(product.id)" class="md-primary md-raised">Delete</md-button>
+			</td>
 		</tr>
 	</tbody>
 </table>
