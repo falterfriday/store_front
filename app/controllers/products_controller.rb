@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-def create
+	def create
 		Product.create(product_params)
 		allproducturlprocess
 	end
