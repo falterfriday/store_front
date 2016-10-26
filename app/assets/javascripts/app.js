@@ -2,11 +2,11 @@ var app = angular.module('app', ['ngMaterial', 'ngRoute', 'ngCookies', 'ngFileUp
 app.config(function($routeProvider,  $httpProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "/partials/all.html.erb",
+            templateUrl: "/partials/all.html",
             controller: "categoriesController"
         })
         .when("/show_product/:id", {
-            templateUrl: "/partials/show.html.erb",
+            templateUrl: "/partials/show.html",
             controller: "productsController"
         })
         .when("/checkout", {
@@ -28,7 +28,7 @@ app.config(function($routeProvider,  $httpProvider) {
         .when("/admin/products", {
             templateUrl: "/partials/admin_products.html",
             controller: "adminProductsController"
-        })
+        });
 
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 });
